@@ -1,0 +1,7 @@
+Arquivo de Respostas
+
+	Para tanto, o método desenfileirar(), quando o método frente(), ao serem chamados, fazem uma verificação do comprimento da pilha pilha\_saida. Após essa verificação, se a pilha de remoção estiver vazia, fará uma transferência completa dos itens presentes na pilha de entrada, a qual tem uma complexidade de O(N), com esse sendo o pior caso para o método como um todo.  
+OBS.: Após isso, há a presença do retorno, mas como os dois métodos utilizados no retorno são O(1), eles não fazem uma diferença significativa.  
+	Como mencionado acima, o caso de complexidade O(N) só ocorre em uma situação em que todos os itens estão na outra pilha. Assim, em todos os outros n-1 casos, a complexidade do método será O(1).  
+	Fazendo a soma de todos os casos, temos: N+(N-1) \= 2N-1. E ao dividir essa soma das complexidades pelo número de casos, temos: (2N-1)/N \= 2-(1/N). Considerando que esse valor é uma constante subtraída por um valor irrelevante, temos a complexidade amortizada O(1).  
+	Além desse caso específico, todo elemento da pilha só sofrerá uma transferência em sua vida durante a execução do código. Ou seja, a transferência nunca pode incluir um elemento mais de uma vez, o que resulta numa soma dos casos na qual para todo elemento de N incluso numa transferência, ele nunca mais aparecerá em outra, fazendo que a soma do custo de operações é O(N) para todos os casos. E dividindo pela quantidade de casos, temos a mesma complexidade amortizada de O(1).
