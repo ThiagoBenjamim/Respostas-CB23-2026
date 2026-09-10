@@ -68,7 +68,7 @@ class PilhaEncadeada:
 
         return self.length_counter
 
-    def repr(self):
+    def __repr__(self):
         '''Como precisa percorrer a pilha inteira pelo menos uma vez,
         sua complexidade é:
         O(N)'''
@@ -84,7 +84,3 @@ class PilhaEncadeada:
         text += str(current.data)
 
         return text
-
-
-pilha = PilhaEncadeada()
-print(pilha.repr())

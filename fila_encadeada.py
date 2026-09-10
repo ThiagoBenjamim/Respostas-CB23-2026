@@ -52,23 +52,40 @@ class FilaEncadeada:
 
         return (len(self.pilha_entrada) + len(self.pilha_saida))
 
-    def repr(self):
-        '''Primeiro passa todos os itens da pilha de entrada para a pilha de extração, que é uma ação O(N),
-        após isso, '''
+    def __repr__(self):
+        '''Primeiro, se a pilha de extração estiver vazia, passa todos os itens para ela, se não,
+        esvazia essa pilha no output antes de passar os elementos da fila de entrada,
+        após isso, finalmente extrai no output, e por fim, tudo volta para a pilha de saida,
+        como todas as ações são O(N),
+        a complexidade total desse método é O(N).'''
 
-        while not self.pilha_entrada.esta_vazia():
-            self.pilha_saida.push(self.pilha_entrada.pop())
+        pilha_aux = PilhaEncadeada()
+
+        if self.pilha_saida.esta_vazia():
+            while not self.pilha_entrada.esta_vazia():
+                self.pilha_saida.push(self.pilha_entrada.pop())
 
         if self.pilha_saida.esta_vazia():
             raise IndexError("Fila está vazia.")
 
-        sub_pilha_saida = self.pilha_saida
-        text = f"{sub_pilha_saida.pop()}"
-        while not sub_pilha_saida.esta_vazia():
-            text += f" - {sub_pilha_saida.pop()}"
-        
-        return text
+        pop = self.pilha_saida.pop()
+        pilha_aux.push(pop)
+        texto = f"{pop}"
+        while not self.pilha_saida.esta_vazia():
+            pop = self.pilha_saida.pop()
+            pilha_aux.push(pop)
+            texto += f" - {pop}"
 
-fila = FilaEncadeada()
+        if not self.pilha_entrada.esta_vazia():
+            while not self.pilha_entrada.esta_vazia():
+                self.pilha_saida.push(self.pilha_entrada.pop())
 
-print(fila.repr())
+            while not self.pilha_saida.esta_vazia():
+                pop = self.pilha_saida.pop()
+                pilha_aux.push(pop)
+                texto += f" - {pop}"
+
+        while not pilha_aux.esta_vazia():
+            self.pilha_saida.push(pilha_aux.pop())
+
+        return texto
