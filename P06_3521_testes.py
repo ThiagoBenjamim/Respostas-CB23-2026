@@ -1,5 +1,5 @@
-from pilha_encadeada import PilhaEncadeada
-from fila_encadeada import FilaEncadeada
+from P06_3521_pilha_encadeada import PilhaEncadeada
+from P06_3521_fila_encadeada import FilaEncadeada
 
 print("Teste Pilha:")
 pilha_push_pop = PilhaEncadeada()

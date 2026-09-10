@@ -1,4 +1,4 @@
-from pilha_encadeada import PilhaEncadeada
+from P06_3521_pilha_encadeada import PilhaEncadeada
 
 class FilaEncadeada:
     def __init__(self):
